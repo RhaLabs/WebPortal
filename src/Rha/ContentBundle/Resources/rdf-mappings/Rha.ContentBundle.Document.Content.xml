@@ -1,0 +1,12 @@
+<!-- Resources/rdf-mappings/Rha.ContentBundle.Document.Profile.xml -->
+<type
+    xmlns:schema="http://schema.org/"
+    typeof="schema:WebPage"
+>
+    <children>
+        <property property="schema:headline" identifier="title" tag-name="h1"/>
+        <property property="schema:text" identifier="content">
+           <!-- <attribute key="class" value="my-css-class"/> -->
+        </property>
+    </children>
+</type>

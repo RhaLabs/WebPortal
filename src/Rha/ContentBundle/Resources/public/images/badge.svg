@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+   version="1.2"
+   baseProfile="tiny"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   x="0px" y="0px"
+   width="131"
+   height="231.71875"
+   viewBox="0 0 131 231.71875"
+   xml:space="preserve"
+   id="badge">
+  <path
+     d="m 0.5,0.5 h 130 v 170 l -65,-35 -65,35 z"
+     id="path2989"
+     style="stroke:none;fill:#7a0000;fill-opacity:1" />
+  <path
+     d="m 120,0.5 v 150 l -54.5,-27.25 -55,27.25 L 10.5,0.5"
+     id="path2"
+     style="fill:none;stroke:#ffffff;stroke-opacity:1;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:2,2;stroke-dashoffset:0"
+  />
+  <text
+     xml:space="preserve"
+     style="font-size:14px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+text-anchor="middle"
+     id="text2991">
+       <tspan 
+       id="tspan2993"
+       x="83"
+       y="70"
+       style="font-weight:bold;fill:#ffffff;fill-opacity:1;">CELEBRATING</tspan>
+       <tspan
+       x="82"
+       y="90"
+       id="tspan2995"
+       style="font-weight:bold;fill:#ffffff;fill-opacity:1;">30 YEARS</tspan>
+       <tspan
+       x="65"
+       y="110"
+       id="tspan2997"
+       style="font-weight:bold;fill:#ffffff;fill-opacity:1;">OF SERVICE</tspan></text>
+</svg>

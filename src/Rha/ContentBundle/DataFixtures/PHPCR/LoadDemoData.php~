@@ -1,0 +1,94 @@
+<?php
+
+namespace Rha\ContentBundle\DataFixtures\PHPCR;
+
+use Doctrine\ODM\PHPCR\DocumentManager;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\DataFixtures\FixtureInterface;
+use Rha\ContentBundle\Document\Profile;
+use Rha\ContentBundle\Document\Content;
+
+/**
+ * Loads the initial demo data of the demo website.
+ */
+class LoadDemoData implements FixtureInterface
+{
+    /**
+     * Load data fixtures with the passed DocumentManager
+     *
+     * @param DocumentManager $manager
+     */
+    public function load(ObjectManager $manager)
+    {
+        if (!$manager instanceof DocumentManager) {
+            $class = get_class($manager);
+            throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
+        }
+
+        // tweak homepage
+        $parent = $manager->find(null, '/cms/about/us');
+
+        // load the pages
+        $profiles = array(
+            0 => array('title' => 'Leonard McCoy', 'content' => 'Also known as Bones.', 'summary' => 'The Ship\'s doctor'),
+            1 => array('title' => 'James T. Kirk', 'content' => 'The only starfleet cadet to complete the Kobayashi Maru', 'summary' => 'The ship\'s captain'),
+            2 => array('title' => 'Scotty', 'content' => 'Invented a way to beam upon objects moving at warp speeds', 'summary' => 'The ship\'s engineer'),
+        );
+        
+        foreach ( $profiles AS $profile ) {
+            $info = new Profile();
+            $info->setParentDocument($parent);
+            $info->setTitle($profile['title']);
+            $info->setContent($profile['content']);
+            $info->setSummary($profile['summary']);
+            
+            $manager->persist($info);
+        }
+        
+        $parent = $manager->find(null, '/cms/home');
+        $this->persistPages($manager, $parent);
+        
+        $parent = $manager->find(null, '/cms/portfolio');
+        $this->persistPages($manager, $parent);
+        
+        $parent = $manager->find(null, '/cms/about/mission');
+        $this->persistPages($manager, $parent);
+        
+        $parent = $manager->find(null, '/cms/about/culture');
+        $this->persistPages($manager, $parent);
+        
+        $parent = $manager->find(null, '/cms/contact');
+
+        $info = new Profile();
+        $info->setParentDocument($parent);
+        $info->setTitle('contactus');
+        $info->setContent('name phonenumber: 123-456-7890 email: someone@example.com');
+        
+        $manager->persist($info);
+
+        // save the changes
+        $manager->flush();
+    }
+    
+    private function persistPages($manager, $parent)
+    {
+        $gibber = '<h2>Heading</h2>
+                    <p>'.$parent->getNodename().'</p>
+                    <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>';
+        
+        $Contents = array(
+            0 => array('title' => 'Billboard', 'content' => $gibber),
+            1 => array('title' => 'Info', 'content' => $gibber),
+            2 => array('title' => 'Graphic', 'content' => $gibber),
+        );
+        
+        foreach ( $Contents AS $content ) {
+            $info = new Content();
+            $info->setParentDocument($parent);
+            $info->setTitle($content['title']);
+            $info->setContent($content['content']);
+            
+            $manager->persist($info);
+        }
+    }
+}

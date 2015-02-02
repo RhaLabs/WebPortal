@@ -1,0 +1,13 @@
+{% extends 'ApplicationGlobalBundle::skeleton.html.twig' %}
+
+{% block content_content %}
+    {% createphp profile as="rdf" noautotag %}
+    <div class="row panel" {{ createphp_attributes(rdf) }}>
+        <section class="jumbotron">
+            <h2 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h2>
+            <p{{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</p>
+        </section><!--/.col-xs-6.col-lg-4-->
+    </div><!--/row-->
+    {% endcreatephp %}
+{% endblock %}
+

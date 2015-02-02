@@ -1,0 +1,62 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+
+    <services>
+        <service id="rha_content.phpcr.initializer"
+                 class="Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer">
+            <argument>RhaContentBundle Basepaths</argument>
+            <argument type="collection">
+                <argument>/cms/content</argument>
+                <argument>/cms/home</argument>
+                <argument>/cms/portfolio</argument>
+                <argument>/cms/about</argument>
+                <argument>/cms/contact</argument>
+                <argument>/cms/about/mission</argument>
+                <argument>/cms/about/culture</argument>
+                <argument>/cms/about/us</argument>
+            </argument>
+            <tag name="doctrine_phpcr.initializer"/>
+        </service>
+        
+        <service id="rha.content.admin.profile"
+            class="Rha\ContentBundle\Admin\ProfileAdmin">
+
+            <call method="setRouteBuilder">
+                <argument type="service" id="sonata.admin.route.path_info_slashes" />
+            </call>
+
+            <tag
+                name="sonata.admin"
+                manager_type="doctrine_phpcr"
+                group="Content"
+                label="Profile"
+            />
+            <argument/>
+            <argument>Rha\ContentBundle\Document\Profile</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+        
+        <service id="rha.content.home_content.profile"
+            class="Rha\ContentBundle\Admin\ContentAdmin">
+
+            <call method="setRouteBuilder">
+                <argument type="service" id="sonata.admin.route.path_info_slashes" />
+            </call>
+
+            <tag
+                name="sonata.admin"
+                manager_type="doctrine_phpcr"
+                group="Content"
+                label="Content"
+            />
+            <argument/>
+            <argument>Rha\ContentBundle\Document\Content</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+        </service>
+    </services>
+
+</container>

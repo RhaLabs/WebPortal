@@ -1,0 +1,15 @@
+{% extends 'ApplicationGlobalBundle::skeleton.html.twig' %}
+
+{% block content_content %}
+    <div class="col-xs-12">
+        <div class="row panel">
+            {% for article in portfolioItems %}
+                {% createphp article as="rdf" noautotag %}
+                    <div class="col-xs-12 col-sm-6" {{ createphp_attributes(rdf) }}>
+                        <div{{ createphp_attributes( rdf.content ) }}>{{ createphp_content( rdf.content ) }}</div>
+                    </div>
+                {% endcreatephp %}
+            {% endfor %}
+        </div><!--/row-->
+    </div><!--/.col-xs-12.col-sm-9-->
+{% endblock %}

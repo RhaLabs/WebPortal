@@ -1,0 +1,14 @@
+{% extends 'ApplicationGlobalBundle::skeleton.html.twig' %}
+
+{% block content_content %}
+<div class="row panel">
+    {% for profile in profiles %}
+    <section class="col-xs-12 col-sm-6 col-lg-4">
+        <h2>{{ profile.title }}</h2>
+        <p>{{ profile.summary }}</p>
+        <p><a class="btn btn-primary" href="{{ path('profile', {'name': profile.title}) }}" role="button">View Profile &raquo;</a></p>
+    </section><!--/.col-xs-6.col-lg-4-->
+    {% endfor %}
+</div><!--/row-->
+{% endblock %}
+

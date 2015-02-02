@@ -1,0 +1,31 @@
+{% extends 'ApplicationGlobalBundle::skeleton.html.twig' %}
+
+{% block content %}
+<!--[if gt IE 9]><!-->
+<div class="col-sm-12">
+    <div class="col-centered" style="width:870px !important;">
+          {% for card in cards %}
+            <div class="flip">
+                <figure class="cards">
+                    <img class="card front" src="{{ card.front }}"/>
+                </figure>
+            </div>
+          {% endfor %}
+    </div>
+</div>
+<!--<![endif]-->
+<!--[if lte IE 9]>
+    <div class="col-sm-10">
+        <img class="center-block" src="{{ asset('bundles/rhacontent/images/211.jpg') }}"/>
+    </div>
+<![endif]-->
+{% endblock %}     
+{% block foot_script %}
+{{ parent() }}
+     <script>
+     $(".flip").hover(function(){
+  $(this).find(".card").toggleClass("flipped");
+  return false;
+});
+</script> 
+{% endblock %}

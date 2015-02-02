@@ -1,0 +1,49 @@
+parameters:
+    locale: en
+    locales: [en, fr, de]
+    
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_name_2:   rha_content
+    database_user:     root
+    database_password: ~
+    database_path:     ~
+    database_socket:   /var/run/mysqld/mysqld.sock
+    
+    node_path:         /usr/bin/node
+    node_paths:        [/usr/local/lib/node_modules, /usr/local/bin]
+    java_path:         /usr/bin/java
+    coffee.extension: "\.coffee-disabled$"
+    coffee.bin: ''
+    coffee.node: ''
+    uglifycss:          /usr/local/bin/uglifycss
+    uglifyjs:           /usr/local/bin/uglifyjs2
+
+    phpcr_backend:
+        # use Jackalope Doctrine DBAL
+        type: doctrinedbal
+        connection: default
+        caches:
+            meta: doctrine_cache.providers.phpcr_meta
+            nodes: doctrine_cache.providers.phpcr_nodes
+    phpcr_workspace:   default
+    phpcr_user:        admin
+    phpcr_password:    admin
+
+    mailer_transport:  sendmail
+    mailer_host:       127.0.0.1
+    mailer_user:       www-data
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    debug_toolbar:          true
+    debug_redirects:        false
+    use_assetic_controller: true
+
+    security_users:
+        user:  { password: user, roles: [ 'ROLE_USER' ] }
+        admin: { password: admin, roles: [ 'ROLE_ADMIN' ] }
